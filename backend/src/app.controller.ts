@@ -3,13 +3,14 @@ import { SecretosService } from './servicios/secretos/secretos.service';
 
 @Controller()
 export class AppController {
-   
+  private dbConfig: any;
+
   constructor(private readonly secretosService: SecretosService) {}
 
   @Get()
   @HttpCode(HttpStatus.OK)
   async getHello(){
-    let secreto = await this.secretosService.getSecret('mi-secreto');
-    return {estado:"ok", mensaje:"MI CD jonathan", secreto: secreto }
+    this.dbConfig = await this.secretosService.getSecret('mi-secreto');
+    return {estado:"ok", mensaje:"MI CD jonathan", secreto: this.dbConfig }
   }
 }
