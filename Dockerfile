@@ -1,5 +1,5 @@
 # Usar una imagen base de Node.js 21
-FROM node:21
+FROM node:22
 
  
 
